@@ -1,0 +1,2 @@
+The .gitignore file ignores lots of the files unity uses that we dont need in the repository. After you download the repository, create a project in unity, and copy any missing files from the project folder to your repository folder.
+(Some folders you need to copy include Library, Logs, and UserSettings). After you have all the files you need in your repository folder, click "add project" in unity and pick your repository folder.
