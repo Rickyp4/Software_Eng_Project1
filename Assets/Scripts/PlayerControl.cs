@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public Camera sceneCam;
     public Rigidbody2D rb;
     public float moveSpeed;
+    public Gun gun;
     float sprint;
     private Vector2 moveDirection;
     private Vector2 mousePos;
@@ -26,7 +27,12 @@ public class PlayerControl : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
+
         sprint = Input.GetAxisRaw("Fire3");
+
+        if(Input.GetMouseButtonDown(0)){
+            gun.Fire();
+        }
         moveDirection = new Vector2(moveX, moveY).normalized;
         mousePos = sceneCam.ScreenToWorldPoint(Input.mousePosition);
     }
