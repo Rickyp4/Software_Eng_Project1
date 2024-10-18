@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed;
     public GameObject player;
     public int hp;
+    public int soulValue;
     private Vector2 direction;
     private bool beingDirected = false;
     void Awake(){
@@ -21,6 +22,10 @@ public class EnemyAI : MonoBehaviour
             direction = col.transform.up;
             beingDirected = true;
             break;
+        }
+    }
+    public void OnCollisionEnter2D(Collision2D col){
+        switch(col.gameObject.tag){
             case "Player":
             col.gameObject.GetComponent<PlayerScript>().TakeDamage(1);
             break;
@@ -34,13 +39,8 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        if(hp == 2){
-            //add injured indication
-        }
-        if(hp == 1){
-            //add injured indication
-        }
         if(hp == 0){
+            player.GetComponent<PlayerScript>().GiveSoul(soulValue);
             Destroy(gameObject);
         }
     }

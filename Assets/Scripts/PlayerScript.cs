@@ -10,14 +10,38 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed;
     public Gun gun;
     public int hp;
+    public int souls = 0;
+    public SpriteRenderer characterSprite;
     private Vector2 moveDirection;
     private Vector2 mousePos;
 
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        if(hp == 2){
+            characterSprite.color = new Color(0.61f, 0.2f, 0.78f);
+        }
+        if(hp == 1){
+            characterSprite.color = new Color(0.78f, 0.2f, 0.4f);
+        }
         if(hp == 0){
             SceneManager.LoadScene("GameOver");
+        }
+    }
+    public void GiveSoul(int soul){
+        souls += soul;
+        if(souls == 3){
+            characterSprite.color = Color.red;
+        }
+    }
+    public int GetSouls(int checkSouls, int takeSouls = 0){
+        if(souls < checkSouls){
+            return -1;
+        }
+        else{
+            int surplus = souls - checkSouls;
+            souls -= takeSouls;
+            return surplus;
         }
     }
     void Update()
