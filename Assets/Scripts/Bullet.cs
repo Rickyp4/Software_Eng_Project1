@@ -5,15 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public void OnTriggerEnter2D(Collider2D other){
-        switch(other.gameObject.tag){
+    public void OnTriggerEnter2D(Collider2D col){
+        switch(col.gameObject.tag){
             case "Wall":
             Destroy(gameObject);
             break;
-            //case "Enemy";
-            //other.gameObject.GetComponenet<MyEnemyScript>().TakeDamage();
-            //Destroy(gameObject);
-            //break;
+            case "Enemy":
+            col.gameObject.GetComponent<EnemyAI>().TakeDamage(1);
+            Destroy(gameObject);
+            break;
         }
     }
 }

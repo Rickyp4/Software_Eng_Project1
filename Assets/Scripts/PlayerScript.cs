@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     public Camera sceneCam;
     public Rigidbody2D rb;
     public float moveSpeed;
     public Gun gun;
+    public int hp;
     private Vector2 moveDirection;
     private Vector2 mousePos;
 
-    // Update is called once per frame
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if(hp == 0){
+            SceneManager.LoadScene("GameOver");
+        }
+    }
     void Update()
     {
         if(!PauseMenu.isPaused){
