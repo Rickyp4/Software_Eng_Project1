@@ -9,7 +9,6 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed;
     public Gun gun;
-    float sprint;
     private Vector2 moveDirection;
     private Vector2 mousePos;
 
@@ -31,12 +30,10 @@ public class PlayerControl : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        sprint = Input.GetAxisRaw("Fire3");
-
         if(Input.GetMouseButtonDown(0)){
             gun.Fire();
         }
-        moveDirection = new Vector2(moveX, moveY).normalized;
+        moveDirection = new Vector2(moveX, moveY);
         mousePos = sceneCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
@@ -47,13 +44,5 @@ public class PlayerControl : MonoBehaviour
         Vector2 aimDirection = mousePos -rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x)*Mathf.Rad2Deg -90f;
         rb.rotation = aimAngle;
-        if (sprint > 0)
-        {
-            moveSpeed = 10;
-        }
-        else
-        {
-            moveSpeed = 5;
-        }
     }
 }
