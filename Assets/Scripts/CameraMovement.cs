@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 positionVector;
     void Update()
     {
-        positionVector.Set(playerPosition.position.x, playerPosition.position.y, -10);
+        positionVector.Set(playerPosition.position.x, playerPosition.position.y, -1);
         camPosition.position = positionVector;
     }
 }

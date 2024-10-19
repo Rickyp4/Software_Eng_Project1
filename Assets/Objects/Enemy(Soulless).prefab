@@ -176,3 +176,9 @@ MonoBehaviour:
   player: {fileID: 0}
   hp: 3
   soulValue: 0
+  death:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -10,11 +10,13 @@ public class TimeKeeper : MonoBehaviour
     public int bar;
     public int chord;
     public bool flat;
-    public bool start;
+    public bool startBeat;
+    public bool startBar;
     public AudioSource music;
     private float time = 0;
     private int totalBeat;
     private int prevBeat;
+    private int prevBar;
     private int[] chords = 
     {
     1, 1, 1, 1,
@@ -57,14 +59,21 @@ public class TimeKeeper : MonoBehaviour
     void FixedUpdate()
     {
         if (prevBeat != beat){
-            if((bar == 1)&&(beat ==  1)){
-                music.Play();
-            }
-            start = true;
+            startBeat = true;
         }
         else{
-            start = false;
+            startBeat = false;
         }
         prevBeat = beat;
+        if (prevBar != bar){
+            if((bar == 1)&&(beat ==  1)){
+                music.Play();
+            } 
+            startBar = true;
+        }
+        else{
+            startBar = false;
+        }
+        prevBar = bar;
     }
 }

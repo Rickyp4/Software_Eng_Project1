@@ -72,12 +72,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2062936892520731784, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
       propertyPath: m_Name
-      value: Enemy Variant
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
       propertyPath: soulValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      propertyPath: death.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e5036f1c659db84d8847a91dd2fcfa9, type: 3}
+    - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      propertyPath: death.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ed423f59821a11641a1b3d3c255702e4, type: 3}
+    - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      propertyPath: death.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e3cdb4c9f70e5a44c965a0874e81441b, type: 3}
+    - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      propertyPath: death.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a456471247e43e0418f9be524a4f1624, type: 3}
+    - target: {fileID: 4428326001460875788, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      propertyPath: death.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: b609bbf7e19ff894e94902675f100966, type: 3}
     - target: {fileID: 6893629441046359435, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6

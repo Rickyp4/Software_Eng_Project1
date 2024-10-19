@@ -8,7 +8,6 @@ public class PlayerScript : MonoBehaviour
     public Camera sceneCam;
     public Rigidbody2D rb;
     public float moveSpeed;
-    public Gun gun;
     public int hp;
     public int souls = 0;
     public SpriteRenderer characterSprite;
@@ -61,9 +60,6 @@ public class PlayerScript : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetMouseButtonDown(0)){
-            gun.Fire();
-        }
         moveDirection = new Vector2(moveX, moveY);
         mousePos = sceneCam.ScreenToWorldPoint(Input.mousePosition);
     }

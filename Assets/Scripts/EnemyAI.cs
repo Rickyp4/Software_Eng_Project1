@@ -41,7 +41,9 @@ public class EnemyAI : MonoBehaviour
         hp -= damage;
         if(hp == 0){
             player.GetComponent<PlayerScript>().GiveSoul(soulValue);
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled=false;
+            SoundFX.instance.PlaySting(gameObject.transform, 1f, gameObject);
         }
     }
     void FixedUpdate()

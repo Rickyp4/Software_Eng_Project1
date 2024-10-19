@@ -151,6 +151,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43447a85776e10e4ab7f06629df5e36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stingE:
+  - {fileID: 8300000, guid: 0e5036f1c659db84d8847a91dd2fcfa9, type: 3}
+  - {fileID: 8300000, guid: ed423f59821a11641a1b3d3c255702e4, type: 3}
+  - {fileID: 8300000, guid: e3cdb4c9f70e5a44c965a0874e81441b, type: 3}
+  - {fileID: 8300000, guid: a456471247e43e0418f9be524a4f1624, type: 3}
+  - {fileID: 8300000, guid: b609bbf7e19ff894e94902675f100966, type: 3}
+  stingA:
+  - {fileID: 8300000, guid: 7b47554c97389414683e6f5d017727ae, type: 3}
+  - {fileID: 8300000, guid: 30ac8f5c23529944caa68cfd851deb36, type: 3}
+  - {fileID: 8300000, guid: 0292eae1f39e0db48bffd277b9f586c0, type: 3}
+  - {fileID: 8300000, guid: 17f71d3140d491e4d9a68f0361d0a81b, type: 3}
+  - {fileID: 8300000, guid: 0ece2d87286492c489fa6f4f55a82e2f, type: 3}
+  stingB:
+  - {fileID: 8300000, guid: 4017a97dfeb25104caaf653e631b225b, type: 3}
+  - {fileID: 8300000, guid: a9d7ad761d6d139458ffc709e1dfa47e, type: 3}
+  - {fileID: 8300000, guid: 48a7bc6cd104b3849ba31042932f8b5c, type: 3}
+  - {fileID: 8300000, guid: 624d223d1232b6a4ba3e604d01258bc5, type: 3}
+  - {fileID: 8300000, guid: d851566199940f24494a965751ac1e0a, type: 3}
+  stingG:
+  - {fileID: 8300000, guid: c3a51ee25df6a67439de718d3396ecaf, type: 3}
+  - {fileID: 8300000, guid: aefb1756ae1dbea4fa874626e8f33f7d, type: 3}
+  - {fileID: 8300000, guid: 1e89f530bb13e5240af347f796af2fb2, type: 3}
+  - {fileID: 8300000, guid: 916ffc740df5012488f855abb628cd1b, type: 3}
+  - {fileID: 8300000, guid: e3969c97dc47f614fa9ad1bfabfdf4c0, type: 3}
+  stingD:
+  - {fileID: 8300000, guid: 8aef1e0be5d053241a3c20b243e70d94, type: 3}
+  - {fileID: 8300000, guid: 452803e351c017c4ba8ceec70f2198ca, type: 3}
+  - {fileID: 8300000, guid: 426d000ffa4057c4b87f9d6db444922f, type: 3}
+  - {fileID: 8300000, guid: 02d4cb7e4b72902429b159032133a84f, type: 3}
+  - {fileID: 8300000, guid: 3a69d5e6ad7560d438018e555430136d, type: 3}
+  stingC:
+  - {fileID: 8300000, guid: 9cc34ad5c68f2a64594eb6b9cbeedac8, type: 3}
+  - {fileID: 8300000, guid: cbc9708f47921554f96f375c5847a4de, type: 3}
+  - {fileID: 8300000, guid: 07a839df781ca5e4c8765ba0730f0321, type: 3}
+  - {fileID: 8300000, guid: a0abb2ca65f37634daa56abaf62ea901, type: 3}
+  - {fileID: 8300000, guid: 8f43ab4b70abb014f8479fcfff5ee393, type: 3}
   soundFXObj: {fileID: 6314680170252010159, guid: 92dac35e3e0d7c1448e1a2523f17be68, type: 3}
 --- !u!4 &31156638
 Transform:
@@ -546,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerTag: Player
-  spawnedObject: {fileID: 2062936892520731784, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+  spawnedObject: {fileID: 7481825857172349758, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
   spawnLocation: {fileID: 700929052}
 --- !u!114 &344263767
 MonoBehaviour:
@@ -561,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerTag: Player
-  spawnedObject: {fileID: 2062936892520731784, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+  spawnedObject: {fileID: 7481825857172349758, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
   spawnLocation: {fileID: 1341306769}
 --- !u!1001 &351109315
 PrefabInstance:
@@ -902,9 +938,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3553074849804034363, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7481825857172349758, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
       propertyPath: m_Name
       value: Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481825857172349758, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1330,7 +1374,8 @@ MonoBehaviour:
   bar: 0
   chord: 0
   flat: 0
-  start: 0
+  startBeat: 0
+  startBar: 0
   music: {fileID: 986482196}
 --- !u!4 &986482195
 Transform:
@@ -1841,7 +1886,7 @@ PrefabInstance:
     - target: {fileID: -3708356898658878239, guid: e48f5e8df8cbb7f4da533b5a096ffe7a, type: 3}
       propertyPath: spawnedObject
       value: 
-      objectReference: {fileID: 2062936892520731784, guid: d105b3452184e7a4e8a1f18abea6f00c, type: 3}
+      objectReference: {fileID: 7481825857172349758, guid: e38ceb4804b37ec499e48854fe6780de, type: 3}
     - target: {fileID: 5021019697155139460, guid: e48f5e8df8cbb7f4da533b5a096ffe7a, type: 3}
       propertyPath: m_Name
       value: One_Time_Trigger
@@ -1894,7 +1939,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7848358246429492268, guid: e48f5e8df8cbb7f4da533b5a096ffe7a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2206,6 +2252,9 @@ MonoBehaviour:
   Bullet: {fileID: 3852024027674144865, guid: 85f17170bc18b5d43859f5dfee4891eb, type: 3}
   firePoint: {fileID: 1198035928}
   fireForce: 20
+  maxAmmo: 6
+  curAmmo: 0
+  reloadTime: 1
   gunshots:
   - {fileID: 8300000, guid: d7925aebdf22a8d48b77c91122616ee0, type: 3}
   - {fileID: 8300000, guid: 7749f596f66f9f14cac300a2abb8c8d3, type: 3}
@@ -2487,7 +2536,6 @@ MonoBehaviour:
   sceneCam: {fileID: 519420031}
   rb: {fileID: 1807364114}
   moveSpeed: 5
-  gun: {fileID: 1530696221}
   hp: 3
   souls: 0
   characterSprite: {fileID: 1807364115}
@@ -2579,7 +2627,7 @@ Transform:
   m_GameObject: {fileID: 1807364110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -200, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
