@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Button : MonoBehaviour
 {
     public SpriteRenderer button;
+    public ToggleDoor toggleDoor;
     public int totalSoulsNeeded;
     public int soulPrice;
     public bool stayOn;
@@ -17,6 +19,7 @@ public class Button : MonoBehaviour
                 int souls = col.gameObject.GetComponent<PlayerScript>().GetSouls(totalSoulsNeeded, soulPrice);
                 if(souls >= 0){
                     active = true;
+                    Activate();
                     button.color = new Color(0, 1, 0.125f);
                 }
                 else{
@@ -26,6 +29,7 @@ public class Button : MonoBehaviour
             if(col.gameObject.tag == "Enemy"){
                 if(enemiesCanPress){
                     active = true;
+                    Activate();
                     button.color = new Color(0, 1, 0.125f);
                 }
                 else{
@@ -41,11 +45,22 @@ public class Button : MonoBehaviour
         else{
             if(!stayOn){
                 active = false;
+                Deactivate();
                 button.color = new Color(0, 0.392f, 0.125f);
             }
         }
     }
     public bool GetState(){
         return active;
+    }
+    private void Activate(){
+        if(toggleDoor != null){
+            toggleDoor.Toggle();
+        }
+    }
+    private void Deactivate(){
+        if(toggleDoor != null){
+            toggleDoor.Toggle();
+        }
     }
 }
