@@ -39,11 +39,16 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        if(hp == 0){
-            player.GetComponent<PlayerScript>().GiveSoul(soulValue);
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<Collider2D>().enabled=false;
-            SoundFX.instance.PlaySting(gameObject.transform, 1f, gameObject);
+        if(hp <= 0){
+            if(soulValue > 0){
+                player.GetComponent<PlayerScript>().GiveSoul(soulValue);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<Collider2D>().enabled=false;
+                SoundFX.instance.PlaySting(gameObject.transform, 1f, gameObject);
+            }
+            else{
+                Destroy(gameObject);
+            }
         }
     }
     void FixedUpdate()

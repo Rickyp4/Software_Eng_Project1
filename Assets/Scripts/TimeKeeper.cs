@@ -9,6 +9,7 @@ public class TimeKeeper : MonoBehaviour
     public int beat;
     public int bar;
     public int chord;
+    public int nextChord;
     public bool flat;
     public bool startBeat;
     public bool startBar;
@@ -17,6 +18,7 @@ public class TimeKeeper : MonoBehaviour
     private int totalBeat;
     private int prevBeat;
     private int prevBar;
+    private bool musicIsPaused = false;
     private int[] chords = 
     {
     1, 1, 1, 1,
@@ -54,7 +56,25 @@ public class TimeKeeper : MonoBehaviour
         bar = (totalBeat/4)%36 +1;
         beat = totalBeat%4+1;
         chord = chords[bar-1];
+        if(bar < 36){
+            nextChord = chords[bar];
+        }
+        else{
+            nextChord = chords[0];
+        }
         flat = flats[bar-1];
+        if(PauseMenu.isPaused){
+            if(!musicIsPaused){
+                music.Pause();
+                musicIsPaused = true;
+            }
+        }
+        if(!PauseMenu.isPaused){
+            if(musicIsPaused){
+                music.UnPause();
+                musicIsPaused = false;
+            }
+        }
     }
     void FixedUpdate()
     {

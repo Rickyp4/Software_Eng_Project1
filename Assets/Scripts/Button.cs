@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -11,7 +12,13 @@ public class Button : MonoBehaviour
     public int soulPrice;
     public bool stayOn;
     public bool enemiesCanPress;
+    [SerializeField] private GameObject soulButton;
     private bool active = false;
+    public void Awake(){
+        if(totalSoulsNeeded > 0){
+            soulButton.SetActive(true);
+        }
+    }
     public void OnTriggerEnter2D(Collider2D col)
     {
         if(!active){
@@ -55,7 +62,7 @@ public class Button : MonoBehaviour
     }
     private void Activate(){
         if(toggleDoor != null){
-            toggleDoor.Toggle();
+            toggleDoor.Toggle(stayOn);
         }
     }
     private void Deactivate(){
