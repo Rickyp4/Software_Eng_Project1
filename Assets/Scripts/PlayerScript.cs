@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +12,11 @@ public class PlayerScript : MonoBehaviour
     public int hp;
     public int souls = 0;
     public SpriteRenderer characterSprite;
+    [SerializeField] private AudioClip rip;
     private Vector2 moveDirection;
     private Vector2 mousePos;
+    public bool isDead;
+    public bool isImmune;
 
     public void TakeDamage(int damage)
     {
@@ -21,7 +25,11 @@ public class PlayerScript : MonoBehaviour
                 return;
             }
         }
+        if(isDead || isImmune){
+            return;
+        }
         hp -= damage;
+        StartCoroutine(Immunity(0.5f));
         HealthManage.instance.HealthBarUpdate(hp);
         if(hp == 3){
             characterSprite.color = new Color(0.61f, 0.2f, 0.78f);
@@ -33,7 +41,7 @@ public class PlayerScript : MonoBehaviour
             characterSprite.color = new Color(0.78f, 0.2f, 0.4f);
         }
         if(hp == 0){
-            SceneManager.LoadScene("GameOver");
+            Die();
         }
     }
     public void GiveSoul(int soul){
@@ -51,7 +59,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-        if(!PauseMenu.isPaused){
+        if(!PauseMenu.isPaused && !isDead){
             ProcessInputs();
         }
     }
@@ -77,5 +85,21 @@ public class PlayerScript : MonoBehaviour
         Vector2 aimDirection = mousePos -rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x)*Mathf.Rad2Deg -90f;
         rb.rotation = aimAngle;
+    }
+    private async void Die(){
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(TimeKeeper.instance.gameObject);
+        characterSprite.color = new Color(0, 0, 0, 0.5f);
+        GameObject sound = SoundFX.instance.PlaySoundFX(rip, gameObject.transform, 1, true);
+        while(sound != null){
+            await Task.Yield();
+        }
+        SceneManager.LoadScene("GameOver");
+    }
+    private IEnumerator Immunity(float time){
+        isImmune = true;
+        yield return new WaitForSeconds(time);
+        isImmune = false;
     }
 }

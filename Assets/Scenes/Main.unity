@@ -369,12 +369,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f43ab4b70abb014f8479fcfff5ee393, type: 3}
   FillEE:
   - {fileID: 8300000, guid: f61d98fc379aedf4b83b9835becfbae8, type: 3}
+  - {fileID: 8300000, guid: 3aca4c6eed71c0747ace04016e9ef542, type: 3}
+  - {fileID: 8300000, guid: f6b2c6b3f9c7beb419450ecd26227657, type: 3}
+  - {fileID: 8300000, guid: 3e624aa3d65b6a34eb221128637cf096, type: 3}
+  - {fileID: 8300000, guid: 012728e03566798428047a38165d7c7a, type: 3}
   FillEG:
   - {fileID: 8300000, guid: 90d48ef700bc56b4b830dadb57a33d38, type: 3}
   FillEA:
   - {fileID: 8300000, guid: 49199aa57ae52fd4eaaea7dde43968e4, type: 3}
+  - {fileID: 8300000, guid: 7496a4218d626724388c905bd3364e5d, type: 3}
   FillEB:
   - {fileID: 8300000, guid: 2a61cf5cec00f754795864848592b4f0, type: 3}
+  - {fileID: 8300000, guid: 29196e65f79e85d43b4a37e6918656d3, type: 3}
   FillEC:
   - {fileID: 8300000, guid: ee8bff60c91ac81478e62d2e4470b759, type: 3}
   FillGG:
@@ -385,8 +391,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c2c1a58f1d28b144897b5cf586ecaa7, type: 3}
   FillAE:
   - {fileID: 8300000, guid: 25d5322b8a03754459e650e7ce3c98a9, type: 3}
+  - {fileID: 8300000, guid: 0e9d4cb11f9ed334480793f5eed55d94, type: 3}
   FillAA:
   - {fileID: 8300000, guid: e8312bdfdb6f57e45888425ed526f717, type: 3}
+  - {fileID: 8300000, guid: 0156e37fdbe5bd841bb66e9e12905300, type: 3}
   FillBE:
   - {fileID: 8300000, guid: 2658a0b2318980147a4cc8bb0bad9d95, type: 3}
   FillBA:
@@ -5244,6 +5252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 3852024027674144865, guid: 85f17170bc18b5d43859f5dfee4891eb, type: 3}
   firePoint: {fileID: 1198035928}
+  player: {fileID: 1807364113}
   fireForce: 20
   maxAmmo: 6
   curAmmo: 0
@@ -5609,6 +5618,9 @@ MonoBehaviour:
   hp: 3
   souls: 0
   characterSprite: {fileID: 1807364115}
+  rip: {fileID: 8300000, guid: e5b6a0112b802bb44856864bd37ca40a, type: 3}
+  isDead: 0
+  isImmune: 0
 --- !u!50 &1807364114
 Rigidbody2D:
   serializedVersion: 4

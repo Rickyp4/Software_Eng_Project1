@@ -22,14 +22,15 @@ public class EnemyAI : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col){
         switch(col.gameObject.tag){
             case "Direct":
-            if(gameObject.tag != "Ghost"){
-                //Vector2 arrow = col.transform.up.normalized;
+            if(!gameObject.CompareTag("Ghost"))
+            {
                 director = col.gameObject;
                 beingDirected = true;
             }
             break;
             case "Player":
             col.gameObject.GetComponent<PlayerScript>().TakeDamage(1);
+            moveDirection *= -5;
             break;
         }
     }
@@ -37,11 +38,13 @@ public class EnemyAI : MonoBehaviour
         switch(col.gameObject.tag){
             case "Player":
             col.gameObject.GetComponent<PlayerScript>().TakeDamage(1);
+            moveDirection *= -5;
             break;
         }
     }
     public void OnTriggerExit2D(Collider2D col){
-        if(col.gameObject.tag == "Direct"){
+        if(col.gameObject.CompareTag("Direct"))
+        {
             beingDirected = false;
             director = null;
         }
@@ -63,6 +66,7 @@ public class EnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
+        Move();
         playerDirection = (player.transform.position - transform.position).normalized;
         if(beingDirected){
             moveDirection = new Vector2(playerDirection.x + director.transform.up.normalized.x*2, playerDirection.y + director.transform.up.normalized.y*2).normalized;
@@ -70,7 +74,6 @@ public class EnemyAI : MonoBehaviour
         else{
             moveDirection = playerDirection;
         }
-        Move();
     }
     void Move()
     {

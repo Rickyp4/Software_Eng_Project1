@@ -44,6 +44,17 @@ public class SoundFX : MonoBehaviour
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
     }
+    public GameObject PlaySoundFX(AudioClip audioClip, Transform spawnTransform, float volume, bool returnSource)
+    {
+        AudioSource audioSource = Instantiate(soundFXObj, spawnTransform.position, Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        float clipLength = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+        return audioSource.gameObject;
+    }
+
 
     public void PlayRandomSoundFX(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {

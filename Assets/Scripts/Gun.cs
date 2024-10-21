@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
 {
     public GameObject Bullet;
     public Transform firePoint;
+    public PlayerScript player;
     public float fireForce;
     public int maxAmmo = 6;
     public int curAmmo;
@@ -20,6 +21,9 @@ public class Gun : MonoBehaviour
         curAmmo = maxAmmo;
     }
     public void Update(){
+        if(player.isDead){
+            return;
+        }
         if(isReloading){
             if(Input.GetMouseButtonDown(0) && !PauseMenu.isPaused){
                 switch(TimeKeeper.instance.chord){
