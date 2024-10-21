@@ -16,7 +16,16 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(damage < 0){
+            if(hp >= 3){
+                return;
+            }
+        }
         hp -= damage;
+        HealthManage.instance.HealthBarUpdate(hp);
+        if(hp == 3){
+            characterSprite.color = new Color(0.61f, 0.2f, 0.78f);
+        }
         if(hp == 2){
             characterSprite.color = new Color(0.61f, 0.2f, 0.78f);
         }
