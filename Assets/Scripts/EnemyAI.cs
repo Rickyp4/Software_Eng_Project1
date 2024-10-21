@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject player;
     public int hp;
     public int soulValue;
+    public bool facePlayer;
     private Vector2 direction;
     private bool beingDirected = false;
     void Awake(){
@@ -21,6 +22,9 @@ public class EnemyAI : MonoBehaviour
             case "Direct":
             direction = col.transform.up;
             beingDirected = true;
+            break;
+            case "Player":
+            col.gameObject.GetComponent<PlayerScript>().TakeDamage(1);
             break;
         }
     }
@@ -62,5 +66,9 @@ public class EnemyAI : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        if(facePlayer){
+            float aimAngle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg -90f;
+            rb.rotation = aimAngle;
+        }
     }
 }

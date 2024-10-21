@@ -16,4 +16,15 @@ public class Bullet : MonoBehaviour
             break;
         }
     }
+    public void OnTriggerEnter2D(Collider2D col){
+        switch(col.gameObject.tag){
+            case "Ghost":
+            col.gameObject.GetComponent<EnemyAI>().TakeDamage(1);
+            Destroy(gameObject);
+            break;
+            case "Laser":
+            Destroy(gameObject);
+            break;
+        }
+    }
 }

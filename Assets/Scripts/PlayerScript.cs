@@ -29,9 +29,6 @@ public class PlayerScript : MonoBehaviour
     }
     public void GiveSoul(int soul){
         souls += soul;
-        if(souls == 3){
-            characterSprite.color = Color.red;
-        }
     }
     public int GetSouls(int checkSouls, int takeSouls = 0){
         if(souls < checkSouls){
