@@ -12,16 +12,21 @@ public class EnemyAI : MonoBehaviour
     public int hp;
     public int soulValue;
     public bool facePlayer;
-    private Vector2 direction;
+    private Vector2 playerDirection;
+    private Vector2 moveDirection;
     private bool beingDirected = false;
+    private GameObject director;
     void Awake(){
         player = GameObject.FindWithTag("Player");
     }
     public void OnTriggerEnter2D(Collider2D col){
         switch(col.gameObject.tag){
             case "Direct":
-            direction = col.transform.up;
-            beingDirected = true;
+            if(gameObject.tag != "Ghost"){
+                //Vector2 arrow = col.transform.up.normalized;
+                director = col.gameObject;
+                beingDirected = true;
+            }
             break;
             case "Player":
             col.gameObject.GetComponent<PlayerScript>().TakeDamage(1);
@@ -38,6 +43,7 @@ public class EnemyAI : MonoBehaviour
     public void OnTriggerExit2D(Collider2D col){
         if(col.gameObject.tag == "Direct"){
             beingDirected = false;
+            director = null;
         }
     }
     public void TakeDamage(int damage)
@@ -57,17 +63,20 @@ public class EnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Move();
-        if(!beingDirected){
-            direction = player.transform.position - transform.position;
-            direction.Normalize();
+        playerDirection = (player.transform.position - transform.position).normalized;
+        if(beingDirected){
+            moveDirection = new Vector2(playerDirection.x + director.transform.up.normalized.x*2, playerDirection.y + director.transform.up.normalized.y*2).normalized;
         }
+        else{
+            moveDirection = playerDirection;
+        }
+        Move();
     }
     void Move()
     {
-        rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         if(facePlayer){
-            float aimAngle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg -90f;
+            float aimAngle = Mathf.Atan2(moveDirection.y, moveDirection.x)*Mathf.Rad2Deg -90f;
             rb.rotation = aimAngle;
         }
     }
