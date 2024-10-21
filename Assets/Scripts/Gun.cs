@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     private bool isReloading = false;
     [SerializeField] private AudioClip[] gunshots;
     [SerializeField] private AudioClip[] emptyChamber;
+    [SerializeField] private AudioClip[] reloading;
     [SerializeField] private SpriteRenderer[] ammoSprite;
 
     private void Awake(){
@@ -48,6 +49,9 @@ public class Gun : MonoBehaviour
             return;
         }
         if(Input.GetKeyDown(KeyCode.R) && !PauseMenu.isPaused){
+            foreach (SpriteRenderer sr in ammoSprite){
+                sr.enabled = false;
+            }
             StartCoroutine(Reload());
             return;
         }
@@ -83,6 +87,26 @@ public class Gun : MonoBehaviour
     }
     private IEnumerator Reload(){
         isReloading = true;
+        switch(TimeKeeper.instance.chord){
+                    case(1):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 0, true);
+                    break;
+                    case(4):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 1, true);
+                    break;
+                    case(5):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 2, true);
+                    break;
+                    case(3):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 3, true);
+                    break;
+                    case(7):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 4, true);
+                    break;
+                    case(6):
+                    SoundFX.instance.PlaySoundFX(reloading, firePoint, 1f, 5, true);
+                    break;
+                }
         yield return new WaitForSeconds(reloadTime);
         curAmmo = maxAmmo;
         foreach (SpriteRenderer sr in ammoSprite){

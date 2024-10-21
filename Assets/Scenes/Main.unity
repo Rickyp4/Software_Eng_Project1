@@ -3171,8 +3171,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1490731761}
-  - {fileID: 610191964}
-  - {fileID: 1720671386}
   - {fileID: 1440002898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5264,6 +5262,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a5f9aaefc9b94d644a9de72b694d82f3, type: 3}
   - {fileID: 8300000, guid: a89e500ff24760b4ebd7f52958283795, type: 3}
   - {fileID: 8300000, guid: 9e9ae919d6189cc498c31acc0a33a95a, type: 3}
+  reloading:
+  - {fileID: 8300000, guid: 116b6812ab7aef74eb1966ebbce946ba, type: 3}
+  - {fileID: 8300000, guid: 23b028ea205360b44bd1270d8ef4f293, type: 3}
+  - {fileID: 8300000, guid: b33e8c2306009564c86211aa8a2f1560, type: 3}
+  - {fileID: 8300000, guid: 438e8884e01faaa439c4ad8fdde0ad87, type: 3}
+  - {fileID: 8300000, guid: a8cff54a161f01e4b9845f031e1a72ae, type: 3}
+  - {fileID: 8300000, guid: 41720eae7ee50b049812c2fcb69f8243, type: 3}
   ammoSprite:
   - {fileID: 1040684265}
   - {fileID: 913277184}
@@ -6768,3 +6773,4 @@ SceneRoots:
   - {fileID: 1121671918}
   - {fileID: 553956413}
   - {fileID: 338905209}
+  - {fileID: 2133353461}
