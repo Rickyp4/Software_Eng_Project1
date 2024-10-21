@@ -47,6 +47,10 @@ public class Gun : MonoBehaviour
             StartCoroutine(Reload());
             return;
         }
+        if(Input.GetKeyDown(KeyCode.R) && !PauseMenu.isPaused){
+            StartCoroutine(Reload());
+            return;
+        }
         if(Input.GetMouseButtonDown(0) && !PauseMenu.isPaused){
             Fire();
         }
