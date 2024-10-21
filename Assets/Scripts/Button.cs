@@ -14,6 +14,8 @@ public class Button : MonoBehaviour
     public bool stayOn;
     public bool enemiesCanPress;
     [SerializeField] private GameObject soulButton;
+    public GameObject[] spawnedObject;
+    public Transform[] spawnLocation;
     private bool active = false;
     public void Awake(){
         if(totalSoulsNeeded > 0){
@@ -68,6 +70,7 @@ public class Button : MonoBehaviour
         if(toggleLaser != null){
             toggleLaser.Toggle();
         }
+        spawn();
     }
     private void Deactivate(){
         if(toggleDoor != null){
@@ -77,4 +80,12 @@ public class Button : MonoBehaviour
             toggleLaser.Toggle();
         }
     }
+    private void spawn(){
+        if((spawnedObject.Length > 0)&&(spawnLocation.Length > 0)&&(spawnedObject.Length == spawnLocation.Length)){
+            for(int i = 0; i < spawnedObject.Length; i++){
+                GameObject  obj = Instantiate(spawnedObject[i], spawnLocation[i].position, spawnLocation[i].rotation);
+            }
+        }
+    }
 }
+
