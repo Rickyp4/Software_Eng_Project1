@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
         StartCoroutine(Immunity(0.5f));
         HealthManage.instance.HealthBarUpdate(hp);
         if(hp == 3){
-            characterSprite.color = new Color(0.32f, 0.32f, 0xFF);
+            characterSprite.color = new Color(0.196f, 0.196f, 1);
         }
         if(hp == 2){
             characterSprite.color = new Color(0.61f, 0.2f, 0.78f);
@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
         if(hp == 1){
             characterSprite.color = new Color(0.78f, 0.2f, 0.4f);
         }
-        if(hp == 0){
+        if(hp <= 0){
             Die();
         }
     }
