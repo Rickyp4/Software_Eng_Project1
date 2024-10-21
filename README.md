@@ -6,6 +6,7 @@ Controls: W - Up
           S - Down
           D - Right
           Left Mouse Click - Shoot
+          ESC - Pause Menu
 
 Buttons - Buttons are the green squares on the floor.
 Buttons open doors and also do other things... Some buttons
