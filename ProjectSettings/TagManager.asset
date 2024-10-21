@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Direct
   - Enemy
+  - Ghost
+  - Invis
   layers:
   - Default
   - TransparentFX

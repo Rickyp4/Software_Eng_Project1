@@ -8,6 +8,7 @@ public class Button : MonoBehaviour
 {
     public SpriteRenderer button;
     public ToggleDoor toggleDoor;
+    public ToggleLaser toggleLaser;
     public int totalSoulsNeeded;
     public int soulPrice;
     public bool stayOn;
@@ -64,10 +65,16 @@ public class Button : MonoBehaviour
         if(toggleDoor != null){
             toggleDoor.Toggle(stayOn);
         }
+        if(toggleLaser != null){
+            toggleLaser.Toggle();
+        }
     }
     private void Deactivate(){
         if(toggleDoor != null){
             toggleDoor.Toggle();
+        }
+        if(toggleLaser != null){
+            toggleLaser.Toggle();
         }
     }
 }
