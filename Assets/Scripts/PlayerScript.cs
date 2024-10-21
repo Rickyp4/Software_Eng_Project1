@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -66,6 +67,9 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(isDead){
+            return;
+        }
         Move();
     }
 
@@ -88,6 +92,7 @@ public class PlayerScript : MonoBehaviour
     }
     private async void Die(){
         isDead = true;
+        rb.velocity = new Vector2(0, 0);
         GetComponent<Collider2D>().enabled = false;
         Destroy(TimeKeeper.instance.gameObject);
         characterSprite.color = new Color(0, 0, 0, 0.5f);
