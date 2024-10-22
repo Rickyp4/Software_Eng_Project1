@@ -7,16 +7,19 @@ public class TimeKeeper : MonoBehaviour
     public static TimeKeeper instance;
     public float tempo;
     public int beat;
+    public int offBeat;
     public int bar;
     public int chord;
     public int nextChord;
     public bool flat;
     public bool startBeat;
     public bool startBar;
+    public bool startOffBeat;
     public AudioSource music;
     private float time = 0;
     private int totalBeat;
     private int prevBeat;
+    private int prevOffBeat;
     private int prevBar;
     private bool musicIsPaused = false;
     private int[] chords = 
@@ -52,6 +55,7 @@ public class TimeKeeper : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        offBeat = (int)(time*tempo*3f/60)%3;
         totalBeat = (int)(time*tempo/60);
         bar = (totalBeat/4)%36 +1;
         beat = totalBeat%4+1;
@@ -75,9 +79,6 @@ public class TimeKeeper : MonoBehaviour
                 musicIsPaused = false;
             }
         }
-    }
-    void FixedUpdate()
-    {
         if (prevBeat != beat){
             startBeat = true;
         }
@@ -95,5 +96,12 @@ public class TimeKeeper : MonoBehaviour
             startBar = false;
         }
         prevBar = bar;
+        if ((prevOffBeat != offBeat)&&(offBeat == 2)){
+            startOffBeat = true;
+        }
+        else{
+            startOffBeat = false;
+        }
+        prevOffBeat = offBeat;
     }
 }

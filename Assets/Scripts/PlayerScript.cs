@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     public int souls = 0;
     public SpriteRenderer characterSprite;
     [SerializeField] private AudioClip rip;
+    [SerializeField] private AudioClip damaged;
     private Vector2 moveDirection;
     private Vector2 mousePos;
     public bool isDead;
@@ -30,8 +31,15 @@ public class PlayerScript : MonoBehaviour
             return;
         }
         hp -= damage;
-        StartCoroutine(Immunity(0.5f));
         HealthManage.instance.HealthBarUpdate(hp);
+        if(damage > 0){
+            if(hp <= 0){
+                Die();
+                return;
+            }
+            StartCoroutine(Immunity(0.5f));
+            SoundFX.instance.PlaySoundFX(damaged, gameObject.transform, 1, true);
+        }
         if(hp == 3){
             characterSprite.color = new Color(0.196f, 0.196f, 1);
         }
@@ -40,9 +48,6 @@ public class PlayerScript : MonoBehaviour
         }
         if(hp == 1){
             characterSprite.color = new Color(0.78f, 0.2f, 0.4f);
-        }
-        if(hp <= 0){
-            Die();
         }
     }
     public void GiveSoul(int soul){

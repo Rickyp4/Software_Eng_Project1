@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public int maxAmmo = 6;
     public int curAmmo;
     public float reloadTime = 1f;
+    public bool fireToBeat;
     private bool isReloading = false;
     [SerializeField] private AudioClip[] gunshots;
     [SerializeField] private AudioClip[] emptyChamber;
@@ -60,8 +61,18 @@ public class Gun : MonoBehaviour
             StartCoroutine(Reload());
             return;
         }
+        if(Input.GetMouseButton(0) && !PauseMenu.isPaused){
+            if(fireToBeat){
+                if(TimeKeeper.instance.startBeat || TimeKeeper.instance.startOffBeat){
+                    Fire();
+                    return;
+                }
+            }
+        }
         if(Input.GetMouseButtonDown(0) && !PauseMenu.isPaused){
-            Fire();
+            if(!fireToBeat){
+                Fire();
+            }
         }
     }
     public void Fire(){
@@ -92,7 +103,34 @@ public class Gun : MonoBehaviour
     }
     private IEnumerator Reload(){
         isReloading = true;
-        ReloadSound();
+        if(fireToBeat){
+            while(!TimeKeeper.instance.startBeat){
+                yield return null;
+            }
+            switch(TimeKeeper.instance.chord){
+                case(1):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 0, true);
+                break;
+                case(4):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 1, true);
+                break;
+                case(5):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 2, true);
+                break;
+                case(3):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 3, true);
+                break;
+                case(7):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 4, true);
+                break;
+                case(6):
+                SoundFX.instance.PlaySoundFX(reloading, firePoint, 0.7f, 5, true);
+                break;
+            }
+        }
+        else{
+            ReloadSound();
+        }
         yield return new WaitForSeconds(reloadTime);
         curAmmo = maxAmmo;
         foreach (SpriteRenderer sr in ammoSprite){

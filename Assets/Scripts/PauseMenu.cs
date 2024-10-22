@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    [SerializeField] private AudioMixer mixer;
     void Start()
     {
         pauseMenu.SetActive(false);
+        mixer.SetFloat("MusicVolume", Mathf.Log10(0.4f)*20);
     }
 
     void Update()
@@ -39,5 +42,11 @@ public class PauseMenu : MonoBehaviour
     public void mainMenu(){
         ResumeGame();
         SceneManager.LoadScene("Menu");
+    }
+    public void MusicVolume(float level){
+        mixer.SetFloat("MusicVolume", Mathf.Log10(level)*20);
+    }
+    public void SFXVolume(float level){
+        mixer.SetFloat("SoundFXVolume", Mathf.Log10(level)*20);
     }
 }
