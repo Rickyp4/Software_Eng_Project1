@@ -5,7 +5,8 @@ Controls: W - Up
           A - Left
           S - Down
           D - Right
-          Left Mouse Click - Shoot
+	R - Reload
+          Left Mouse Button - Hold to Shoot
           ESC - Pause Menu
 
 Buttons - Buttons are the green squares on the floor.
@@ -16,5 +17,14 @@ Souls - Souls are the blue floating squares existing within
 certain enemies. Killing an enemy that possesses a soul will
 automatically be claimed by the player
 
-Health Pickups - Health pickups can be found in certain rooms.
+Health Pickups - Health pickups are the same shade of green
+as your health bar, and can be found in certain rooms.
 These pickups will increase your health by one tick
+
+Music and SFX: All music and sounds are synced to the music.
+The gun is full auto and fires on 1/8 notes, and other sounds
+being played will be in time and in key.
+
+!!!!Changing windows is known to desync the music!!!!
+If you want to click outside of the game for any reason,
+pause the game first.
