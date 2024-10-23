@@ -17,6 +17,8 @@ public class TimeKeeper : MonoBehaviour
     public bool startOffBeat;
     public AudioSource music;
     private float time = 0;
+    private float deltaT;
+    private float pausedT;
     private int totalBeat;
     private int prevBeat;
     private int prevOffBeat;
@@ -52,32 +54,41 @@ public class TimeKeeper : MonoBehaviour
             instance = this;
         }
     }
+    void Start(){
+        deltaT = Time.realtimeSinceStartup + 0.15f;
+        musicIsPaused = false;
+    }
     void Update()
     {
-        time += Time.deltaTime;
+        if(!PauseMenu.isPaused){
+            if(musicIsPaused){
+                music.UnPause();
+                musicIsPaused = false;
+            }
+            deltaT += pausedT;
+            pausedT = 0;
+            time = Time.realtimeSinceStartup - deltaT;
+        }
         offBeat = (int)(time*tempo*3f/60)%3;
         totalBeat = (int)(time*tempo/60);
-        bar = (totalBeat/4)%36 +1;
+        bar = (totalBeat/4)%36+1;
         beat = totalBeat%4+1;
-        chord = chords[bar-1];
+        if(bar > 0){
+            chord = chords[bar-1];
+            flat = flats[bar-1];
+        }
         if(bar < 36){
             nextChord = chords[bar];
         }
         else{
             nextChord = chords[0];
         }
-        flat = flats[bar-1];
         if(PauseMenu.isPaused){
             if(!musicIsPaused){
                 music.Pause();
                 musicIsPaused = true;
             }
-        }
-        if(!PauseMenu.isPaused){
-            if(musicIsPaused){
-                music.UnPause();
-                musicIsPaused = false;
-            }
+            pausedT = Time.realtimeSinceStartup - (time + deltaT);
         }
         if (prevBeat != beat){
             startBeat = true;
